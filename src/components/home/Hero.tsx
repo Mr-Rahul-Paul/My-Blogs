@@ -1,5 +1,14 @@
+"use client";
 import Svgs from "@/components/ui/svgs";
+import { useState } from "react";
+
 const Hero = () => {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme(theme === "Light" ? "Dark" : "Light");
+  };
+
   return (
     <>
       <section className="relative h-screen bg-cover bg-center max-w-full overflow-hidden">
@@ -35,9 +44,18 @@ const Hero = () => {
             />
           </svg>
         </div>
-        <Svgs />
-        <div className="h-full flex flex-col items-center justify-center bg-[#f7f6f3] text-black">
-          <div className="text-center z-10 px-4">
+        <Svgs theme={theme} />
+        <div
+          className={`h-full flex flex-col items-center justify-center ${
+            theme === "Light"
+              ? "bg-[#f7f6f3] text-black"
+              : "bg-black text-white"
+          }`}
+        >
+          <button onClick={toggleTheme} className="border-white z-30">
+            {theme === "light" ? "dsd🌙" : "☀️"}
+          </button>
+          <div className="text-center px-4">
             <h1 className="font-sans font-bold text-[clamp(3rem,10vw,8rem)] leading-none">
               Paul&apos;s Blogs
             </h1>
