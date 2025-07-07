@@ -1,43 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
+import ThemeProvider from "@/components/layout/ThemeProvider";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "BlogFlow - Your Modern Blogging Platform",
-  description:
-    "Create, share, and discover amazing content with BlogFlow. The modern platform for writers and readers.",
-  keywords: ["blog", "writing", "content", "publishing", "platform"],
-  authors: [{ name: "BlogFlow Team" }],
-  creator: "BlogFlow",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://blogflow.com",
-    title: "BlogFlow - Your Modern Blogging Platform",
-    description: "Create, share, and discover amazing content with BlogFlow.",
-    siteName: "BlogFlow",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "BlogFlow - Your Modern Blogging Platform",
-    description: "Create, share, and discover amazing content with BlogFlow.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  title: "Paul's Blogs",
+  description: "One site all my blogs",
 };
 
 export default function RootLayout({
@@ -46,13 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#18191b]`}
-      >
-        <Header />
-        {children}
-        <Footer />
+    <html lang="en">
+      <body className={inter.className}>
+        <ThemeProvider>
+          {children}
+
+          <Footer />
+          <Header />
+        </ThemeProvider>
       </body>
     </html>
   );
