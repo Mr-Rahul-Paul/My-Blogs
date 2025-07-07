@@ -1,11 +1,12 @@
 import Hero from "@/components/home/Hero";
-import WhatsAhead from "@/components/home/WhatsAhead";
+
+import BlogsSection from "@/components/home/BlogsSection";
 
 export default function Home() {
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-clip">
       <Hero />
-      <WhatsAhead />
+      <BlogsSection />
     </div>
   );
 }
