@@ -9,7 +9,7 @@ const Hero = () => {
     <>
       <section className="relative h-screen bg-cover bg-center max-w-full  z-10 overflow-hidden">
         {/* Background curved SVG for blur gradient effect */}
-        <div className="absolute inset-0 w-full h-full blur-xs overflow-hidden">
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
           <svg
             className="w-full h-full"
             viewBox="0 0 100 100"
@@ -42,15 +42,15 @@ const Hero = () => {
         <Svgs />
         <div className="h-full flex flex-col items-center justify-center">
           <div className="text-center px-4">
-            <h1 className="font-sans font-bold text-[clamp(3rem,10vw,8rem)] leading-none">
+            <h1 className="font-sans font-bold text-[clamp(3rem,10vw,8rem)] leading-none tracking-tight">
               Paul&apos;s Blogs
             </h1>
-            <h2 className="font-sans font-light text-[clamp(1.5rem,5vw,3rem)] leading-none mt-2">
+            <h2 className="font-sans font-bold text-[clamp(1.5rem,5vw,3rem)] leading-none tracking-tight mt-8">
               Where Code Meets Content
             </h2>
-            <div className="flex flex-col items-center justify-center">
-              <p className="text-lg mt-8 max-w-2xl text-center">
-                Tech, Art and More.
+            <div className="flex flex-col items-center justify-center font-semibold text-lg">
+              <p className="mt-8 max-w-2xl text-center">
+                Tech and Art.
                 <br />
                 Explore in-depth tutorials, creative writing, and tech insights.
               </p>
@@ -58,7 +58,7 @@ const Hero = () => {
           </div>
           <div className="flex justify-center ">
             <button
-              className={`${border} hover:backdrop-blur-xl border-2 rounded-2xl p-2 mt-4 z-30`}
+              className={`${border} hover:backdrop-blur-lg border-2 rounded-xl p-2 mt-4 font-semibold z-30`}
             >
               See the blogs
             </button>

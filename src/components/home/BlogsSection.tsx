@@ -5,7 +5,7 @@ import { BlogPost, BlogService } from "@/services/blogService";
 
 const BlogCard = ({ post }: { post: BlogPost }) => {
   return (
-    <article className="group relative bg-gradient-to-br from-[#232427] to-[#1a1b1d] rounded-3xl p-8 hover:from-[#2a2b2e] hover:to-[#232427] transition-all duration-500 hover:shadow-2xl hover:shadow-black/30 cursor-pointer border border-white/5 hover:border-white/10">
+    <article className="border-2 rounded-3xl p-4">
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -119,7 +119,17 @@ const BlogsSection = () => {
   }
 
   return (
-    <section className="relative py-32 bg-gradient-to-b from-[#18191b] to-[#0f1012] text-white overflow-hidden">
+    <section className="relative py-32 bg-gradient-to-b overflow-hidden">
+      {/* Green gradient at the top blending into the background */}
+      <div
+        className="absolute left-0 top-0 w-full h-12 pointer-events-none z-20"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(34,197,94,0.15) 0%, rgba(34,197,94,0.05) 70%, rgba(0,0,0,0) 100%)",
+        }}
+      />
+      {/* Green gradient at the bottom blending into the background */}
+      <div className="absolute left-0 bottom-0 w-full h-32 pointer-events-none z-20" />
       {/* Background decorative elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
@@ -129,13 +139,8 @@ const BlogsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="font-sans font-bold text-[clamp(2.5rem,8vw,5rem)] leading-none mb-6">
-            Latest Blog Posts
+            Latest Blogs
           </h2>
-          <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
-            Explore my latest thoughts on technology, development, and creative
-            coding. Each post is crafted to provide value and insights from
-            real-world experience.
-          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-10 mb-16">
