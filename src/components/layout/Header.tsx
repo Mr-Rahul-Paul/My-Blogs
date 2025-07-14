@@ -22,7 +22,7 @@ const Header = () => {
             Paul&apos;s Blogs
           </Link>
         </div>
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden sm:flex items-center space-x-8">
           <Link
             href="/blogs"
             className={`relative after:content-[""] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[2px] after:transition-all after:duration-300 hover:after:w-full ${
@@ -55,7 +55,7 @@ const Header = () => {
           </Link>
         </nav>
         <div
-          className={`hidden md:flex items-center space-x-4 rounded-full  ${
+          className={` flex items-center space-x-4 rounded-full   ${
             theme === "light" ? "border-black" : "border-white"
           }`}
         >
@@ -73,25 +73,7 @@ const Header = () => {
             {theme === "light" ? "🌙" : "☀️"}
           </button>
         </div>
-        <div className="md:hidden">
-          {/* Mobile Menu Button */}
-          <button>
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
-        </div>
+        
       </div>
     </header>
   );
