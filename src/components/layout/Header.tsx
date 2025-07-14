@@ -55,12 +55,12 @@ const Header = () => {
           </Link>
         </nav>
         <div
-          className={`hidden md:flex items-center space-x-4 rounded-full border-2 ${
+          className={`hidden md:flex items-center space-x-4 rounded-full  ${
             theme === "light" ? "border-black" : "border-white"
           }`}
         >
           <Image
-            className="rounded-full object-cover"
+            className="rounded-full object-cover border-2"
             src="/profile.png"
             alt="profile"
             width={40}
@@ -68,7 +68,7 @@ const Header = () => {
           />
           <button
             onClick={toggleTheme}
-            className="z-30 hover:cursor-pointer pr-2"
+            className="z-30 hover:cursor-pointer rounded-full    p-1"
           >
             {theme === "light" ? "🌙" : "☀️"}
           </button>

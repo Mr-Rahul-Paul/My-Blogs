@@ -1,9 +1,20 @@
 "use client";
 import Svgs from "@/components/ui/svgs";
 import { useTheme } from "@/components/layout/ThemeProvider";
+
 const Hero = () => {
   const { theme } = useTheme();
   const border = theme === "light" ? "!border-black" : "!border-white";
+
+  const scrollToBlogs = () => {
+    const blogsSection = document.getElementById('blogs-section');
+    if (blogsSection) {
+      blogsSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   return (
     <>
@@ -58,6 +69,7 @@ const Hero = () => {
           </div>
           <div className="flex justify-center ">
             <button
+              onClick={scrollToBlogs}
               className={`${border} hover:backdrop-blur-lg border-2 rounded-xl p-2 mt-4 font-semibold z-30`}
             >
               See the blogs
