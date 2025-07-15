@@ -160,10 +160,10 @@ const BlogsSection = () => {
 
         <div className="text-center">
           <button
-            className={`${border} border-3 inline-flex items-center gap-3 px-10 py-4 font-bold text-lg rounded-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 hover:scale-105`}
+            className={`${border} border-3 inline-flex items-center gap-3 px-10 py-4 font-bold text-lg rounded-2xl  hover:shadow-2xl hover:shadow-blue-500/25 `}
           >
             View All Posts
-            <div className="w-6 h-6 border-2 rounded-full flex items-center justify-center ">
+            <div className="w-6 h-6 rounded-full flex items-center justify-center">
               <FiArrowRight className="w-5 h-5 " />
             </div>
           </button>

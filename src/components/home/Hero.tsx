@@ -70,7 +70,7 @@ const Hero = () => {
           <div className="flex justify-center ">
             <button
               onClick={scrollToBlogs}
-              className={`${border} hover:backdrop-blur-lg border-2 rounded-xl p-2 mt-4 font-semibold z-30`}
+              className={`${border} hover:backdrop-blur-lg border-2 rounded-xl p-2 mt-4 font-semibold z-30 hover:shadow-xl hover:shadow-blue-600/25`}
             >
               See the blogs
             </button>
