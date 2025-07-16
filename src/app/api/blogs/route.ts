@@ -1,5 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/services/mongo';
+import { BlogService, BlogPostInput } from '@/services/blogService';
 
 // GET: Fetch all blogs
 export async function GET() {
@@ -13,22 +14,30 @@ export async function GET() {
 }
 
 // POST: Add a new blog
-export async function POST(req: NextRequest) {
+
+export async function POST(request: Request) {
   try {
-    const { db } = await connectToDatabase();
-    const body = await req.json();
-    const { title, content } = body;
-    if (!title || !content) {
-      return NextResponse.json({ success: false, error: 'Title and content are required.' }, { status: 400 });
+    const body = await request.json();
+
+    // Basic validation
+    if (!body.title || !body.summary || !body.content) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
-    const newBlog = {
-      title,
-      content,
-      createdAt: new Date(),
+
+    // Prepare input
+    const input: BlogPostInput = {
+      title: body.title,
+      summary: body.summary,
+      content: body.content,
+      tags: body.tags,
+      category: body.category,
     };
-    const result = await db.collection('blogs').insertOne(newBlog);
-    return NextResponse.json({ success: true, blog: { ...newBlog, _id: result.insertedId } });
+
+    const newPost = await BlogService.createPost(input);
+
+    return NextResponse.json(newPost, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ success: false, error: (error as Error).message }, { status: 500 });
+    console.error('Error creating blog post:', error);
+    return NextResponse.json({ error: 'Failed to create blog post' }, { status: 500 });
   }
 } 

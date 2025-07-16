@@ -26,7 +26,7 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
         </h3>
 
         <p className=" mb-6 line-clamp-3 leading-relaxed text-md">
-          {post.excerpt}
+          {post.summary}
         </p>
 
         <div className="flex items-center justify-between text-base ">
@@ -34,7 +34,7 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
             <div className="flex items-center gap-2">
               <FiCalendar className="w-5 h-5 text-blue-600" />
               <span>
-                {new Date(post.publishDate).toLocaleDateString("en-US", {
+                {new Date(post.createdAt).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
                   year: "numeric",
@@ -43,7 +43,7 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
             </div>
             <div className="flex items-center gap-2">
               <FiClock className="w-5 h-5 text-purple-600" />
-              <span>{post.readTime}</span>
+              <span>{post.read}</span>
             </div>
           </div>
 
