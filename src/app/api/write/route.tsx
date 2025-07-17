@@ -21,6 +21,9 @@ export async function POST(request: Request) {
       content: body.content,
       tags: body.tags,
       category: body.category,
+      slug: body.slug,
+      createdAt: body.createdAt,
+      read: body.read,
     };
 
     

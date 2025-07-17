@@ -18,7 +18,7 @@ export default function Page() {
 
   return (
     <section className="relative min-h-screen bg-cover bg-center max-w-full  z-10 overflow-hidden">
-      <div className="mt-20  gap-8   grid-cols-2 flex items-center justify-center">
+      <div className="mt-20 gap-8 grid-cols-1 md:grid-cols-2 flex flex-col md:flex-row items-center justify-center">
         <div className="text-4xl font-bold max-w-lg">
           <h1>Blogs</h1>
           <p className="text-lg mt-2 text-gray-700">
@@ -47,9 +47,15 @@ export default function Page() {
         {blogs.map((blog: BlogPost) => (
           <div
             key={blog.id}
-            className="flex justify-center items-center border-3 p-3 rounded-3xl"
+            className="grid grid-cols-1 flex-col justify-center items-center border-3 p-3 rounded-3xl"
           >
-            card div
+            <div className="text-left text-2xl font-bold">
+              <h1>{blog.summary}</h1>
+            </div>
+            <br />
+            <div className="text-left text-md text-gray-500">
+              <h1>{blog.summary}</h1>
+            </div>
           </div>
         ))}
       </div>
