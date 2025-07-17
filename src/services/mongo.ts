@@ -1,7 +1,7 @@
-import { MongoClient, Db } from 'mongodb';
+import { MongoClient, Db } from "mongodb";
 
-const uri = 'mongodb://127.0.0.1:27017'; // Local MongoDB
-const dbName = 'personal';
+const uri = "mongodb://127.0.0.1:27017/testdb"; // Local MongoDB
+const dbName = "testdb";
 
 let cachedClient: MongoClient | null = null;
 let cachedDb: Db | null = null;
@@ -19,4 +19,4 @@ export async function connectToDatabase() {
   cachedDb = db;
 
   return { client, db };
-} 
+}

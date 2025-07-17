@@ -1,16 +1,19 @@
-import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/services/mongo';
-import { BlogService, BlogPostInput } from '@/services/blogService';
+import { NextResponse } from "next/server";
+import { connectToDatabase } from "@/services/mongo";
+import { BlogService, BlogPostInput } from "@/services/blogService";
 
 // GET: Fetch all blogs
 export async function GET() {
   try {
-    // sends  you  all the json s in db
     const { db } = await connectToDatabase();
-    const blogs = await db.collection('blogs').find({}).sort({ createdAt: -1 }).toArray();
-    return NextResponse.json({ success: true, blogs });
+    const markdowns = await db.collection("markdowns").find({}).toArray();
+    return NextResponse.json(markdowns, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ success: false, error: (error as Error).message }, { status: 500 });
+    console.error("Error fetching markdowns:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch markdowns" },
+      { status: 500 }
+    );
   }
 }
 
@@ -22,12 +25,15 @@ export async function POST(request: Request) {
 
     // Basic validation
     if (!body.title || !body.summary || !body.content) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
     }
 
     // Prepare input
     const input: BlogPostInput = {
-      title: body.title,
+      name: body.name,
       summary: body.summary,
       content: body.content,
       tags: body.tags,
@@ -38,7 +44,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json(newPost, { status: 201 });
   } catch (error) {
-    console.error('Error creating blog post:', error);
-    return NextResponse.json({ error: 'Failed to create blog post' }, { status: 500 });
+    console.error("Error creating blog post:", error);
+    return NextResponse.json(
+      { error: "Failed to create blog post" },
+      { status: 500 }
+    );
   }
-} 
+}
