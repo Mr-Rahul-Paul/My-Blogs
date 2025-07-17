@@ -27,16 +27,13 @@ function page() {
           />
         </div>
       </div>
-          {/* 
-            The original code uses `translate-x-[200px]` to move the line, 
-            but this is not universal and will not center the line on all screens.
-            What's wrong: The line will always be shifted 200px to the right, which is not responsive or centered.
-            What is happening: The line may appear off-center on different screen sizes.
-            Ways to fix: 
-              - Use flexbox or grid to center the line horizontally.
-              - Remove the translate-x and use mx-auto to center the div.
-          */}
-          <div className="my-6 border-b-2 border-gray-700 max-w-2xl w-full mx-auto"></div>
+      {/* Line */}
+      <div className="my-6 border-b-2 border-gray-700 max-w-2xl w-full mx-auto"></div>
+      <div className="grid grid-cols-1 gap-4 max-w-xl mx-auto">
+        <div className="flex justify-center items-center border-3 p-3 rounded-3xl">
+          card div 
+        </div>
+      </div>
     </section>
   );
 }
