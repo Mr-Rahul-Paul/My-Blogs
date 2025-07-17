@@ -5,6 +5,7 @@ import { BlogService, BlogPostInput } from '@/services/blogService';
 // GET: Fetch all blogs
 export async function GET() {
   try {
+    // sends  you  all the json s in db
     const { db } = await connectToDatabase();
     const blogs = await db.collection('blogs').find({}).sort({ createdAt: -1 }).toArray();
     return NextResponse.json({ success: true, blogs });
