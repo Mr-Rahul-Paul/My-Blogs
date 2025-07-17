@@ -1,7 +1,21 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { BlogPost } from "@/services/blogService";
 
-function page() {
+export default function Page() {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const res = await fetch("/api/blogs");
+      const data = await res.json();
+      setBlogs(data);
+      console.log(data);
+    };
+    fetchBlogs();
+  }, []);
+
   return (
     <section className="relative min-h-screen bg-cover bg-center max-w-full  z-10 overflow-hidden">
       <div className="mt-20  gap-8   grid-cols-2 flex items-center justify-center">
@@ -30,12 +44,15 @@ function page() {
       {/* Line */}
       <div className="my-6 border-b-2 border-gray-700 max-w-2xl w-full mx-auto"></div>
       <div className="grid grid-cols-1 gap-4 max-w-xl mx-auto">
-        <div className="flex justify-center items-center border-3 p-3 rounded-3xl">
-          card div 
-        </div>
+        {blogs.map((blog: BlogPost) => (
+          <div
+            key={blog.id}
+            className="flex justify-center items-center border-3 p-3 rounded-3xl"
+          >
+            card div
+          </div>
+        ))}
       </div>
     </section>
   );
 }
-
-export default page;
