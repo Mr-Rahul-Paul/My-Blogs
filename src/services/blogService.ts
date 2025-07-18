@@ -52,17 +52,7 @@ const mockBlogPosts: BlogPost[] = [
     createdAt: "2024-01-12T00:00:00.000Z",
     read: "10 min read",
   },
-  {
-    id: "3",
-    name: "Mastering CSS Grid: A Complete Guide",
-    summary:
-      "From basic concepts to advanced layouts, explore CSS Grid's powerful features and learn how to create complex, responsive designs with ease.",
-    content: "# Mastering CSS Grid\nThis is a sample markdown content.",
-    tags: ["CSS", "Grid", "Layout"],
-    slug: "mastering-css-grid",
-    createdAt: "2024-01-10T00:00:00.000Z",
-    read: "10 min read",
-  },
+
   {
     id: "4",
     name: "Performance Optimization in Next.js Applications",
@@ -74,6 +64,7 @@ const mockBlogPosts: BlogPost[] = [
     slug: "nextjs-performance-optimization",
     createdAt: "2024-01-08T00:00:00.000Z",
     read: "10 min read",
+    category: ["coding"],
   },
 ];
 

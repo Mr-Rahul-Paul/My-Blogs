@@ -50,11 +50,11 @@ export default function Page() {
             className="grid grid-cols-1 flex-col justify-center items-center border-3 p-3 rounded-3xl"
           >
             <div className="text-left text-2xl font-bold">
-              <h1>{blog.summary}</h1>
+              <h1>{blog.name}</h1>
             </div>
             <br />
             <div className="text-left text-md text-gray-500">
-              <h1>{blog.summary}</h1>
+              <h1>no summary</h1>
             </div>
           </div>
         ))}

@@ -22,7 +22,7 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
         </div>
 
         <h3 className="text-3xl font-extrabold mb-4 group-hover:text-blue-300 transition-colors line-clamp-2 leading-tight z-30 drop-shadow-lg">
-          {post.title}
+          {post.name}
         </h3>
 
         <p className=" mb-6 line-clamp-3 leading-relaxed text-md">
@@ -66,7 +66,10 @@ const BlogsSection = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { theme } = useTheme();
-  const border = theme === "light" ? "!border-black  !text-black" : "!border-white border-2 !text-white";
+  const border =
+    theme === "light"
+      ? "!border-black  !text-black"
+      : "!border-white border-2 !text-white";
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -128,7 +131,10 @@ const BlogsSection = () => {
   }
 
   return (
-    <section id="blogs-section" className="relative py-32 bg-gradient-to-b overflow-hidden">
+    <section
+      id="blogs-section"
+      className="relative py-32 bg-gradient-to-b overflow-hidden"
+    >
       {/* Green gradient at the top blending into the background */}
       <div
         className="absolute left-0 top-0 w-full h-12 pointer-events-none z-20"
@@ -153,9 +159,15 @@ const BlogsSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-10 mb-16">
-          {posts.map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
+          {posts.map((post, idx) => {
+            const isLastOdd =
+              posts.length % 2 === 1 && idx === posts.length - 1;
+            return (
+              <div key={post.id} className={isLastOdd ? "md:col-span-2" : ""}>
+                <BlogCard post={post} />
+              </div>
+            );
+          })}
         </div>
 
         <div className="text-center">
