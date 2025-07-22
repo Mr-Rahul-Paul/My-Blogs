@@ -1,6 +1,6 @@
 import { MongoClient, Db } from "mongodb";
 
-const uri = "mongodb://127.0.0.1:27017/testdb"; // Local MongoDB
+const uri = process.env.MONGODB_URI!;
 const dbName = "testdb";
 
 let cachedClient: MongoClient | null = null;

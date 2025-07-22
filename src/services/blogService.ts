@@ -1,3 +1,5 @@
+import { connectToDatabase } from "./mongo";
+
 // Interface for blog post data
 export interface BlogPost {
   id: string;
@@ -63,8 +65,6 @@ const mockBlogPosts: BlogPost[] = [
   },
 ];
 
-import { connectToDatabase } from "./mongo";
-
 // Service class for blog operations
 export class BlogService {
   // Get all blog posts
@@ -88,11 +88,9 @@ export class BlogService {
 
   // Get post by slug
   static async getPostBySlug(slug: string): Promise<BlogPost | null> {
-    // Fetch from MongoDB
     const { db } = await connectToDatabase();
     const doc = await db.collection("markdowns").findOne({ slug });
     if (!doc) return null;
-    // Map MongoDB doc to BlogPost
     return {
       id: doc._id?.toString() || "",
       name: doc.name || doc.title || "Untitled",
