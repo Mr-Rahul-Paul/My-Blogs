@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { FiArrowRight, FiCalendar, FiClock } from "react-icons/fi";
-import { BlogPost, BlogService } from "@/services/blogService";
+import { BlogPost } from "@/services/blogService";
 import { useTheme } from "@/components/layout/ThemeProvider";
 
 const BlogCard = ({ post }: { post: BlogPost }) => {
@@ -75,8 +75,10 @@ const BlogsSection = () => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
-        const featuredPosts = await BlogService.getFeaturedPosts(4);
-        setPosts(featuredPosts);
+        const res = await fetch("/api/blogs");
+        if (!res.ok) throw new Error("Failed to fetch");
+        const data = await res.json();
+        setPosts(data.slice(0, 4)); // Show only 4 featured posts
       } catch (err) {
         setError("Failed to load blog posts");
         console.error("Error fetching posts:", err);
@@ -84,7 +86,6 @@ const BlogsSection = () => {
         setLoading(false);
       }
     };
-
     fetchPosts();
   }, []);
 

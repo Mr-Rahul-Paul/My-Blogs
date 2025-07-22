@@ -10,12 +10,7 @@ export interface BlogPost {
   createdAt: string; // ISO date string
   read: string; // ISO date string
 }
-// whats the difference between BlogPost and BlogPostInput
-// BlogPost is the interface for the blog post data
-// BlogPostInput is the interface for the blog post input data
-// BlogPostInput is used to create a new blog post
-// BlogPost is used to get a blog post
-// BlogPostInput is used to create a new blog post
+
 export interface BlogPostInput {
   name: string;
   summary: string; // Short summary for cards
@@ -68,6 +63,8 @@ const mockBlogPosts: BlogPost[] = [
   },
 ];
 
+import { connectToDatabase } from "./mongo";
+
 // Service class for blog operations
 export class BlogService {
   // Get all blog posts
@@ -91,11 +88,22 @@ export class BlogService {
 
   // Get post by slug
   static async getPostBySlug(slug: string): Promise<BlogPost | null> {
-    // TODO: Replace with actual database fetch
-    // Example: return await fetch(`/api/posts/${slug}`).then(res => res.json());
-
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    return mockBlogPosts.find((post) => post.slug === slug) || null;
+    // Fetch from MongoDB
+    const { db } = await connectToDatabase();
+    const doc = await db.collection("markdowns").findOne({ slug });
+    if (!doc) return null;
+    // Map MongoDB doc to BlogPost
+    return {
+      id: doc._id?.toString() || "",
+      name: doc.name || doc.title || "Untitled",
+      summary: doc.summary || "",
+      content: doc.content || "",
+      category: doc.category || [],
+      tags: doc.tags || [],
+      slug: doc.slug,
+      createdAt: doc.createdAt || new Date().toISOString(),
+      read: doc.read || "",
+    };
   }
 
   // Get posts by category
