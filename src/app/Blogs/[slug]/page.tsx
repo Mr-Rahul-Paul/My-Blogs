@@ -20,13 +20,21 @@ async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
 
 // --- (2) DYNAMIC METADATA ---
 // HACK: Apply 'any' to the props to bypass the type error for generateMetadata.
+
+// ohh so the metadata of the page , say name , slug and other parameter are being
+// defined by the incoming object from the db so the generate meta data sets the heading
+//   and all that from this fucntion by reading the object?
+
+// ans ---- YES
+
+// GETS CALLLED AUTOMATICALLY BY NEXT JS
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const resolvedParams = await params;
   const blog = await getBlogPostBySlug(resolvedParams.slug);
 
   if (!blog) {
     return {
-      title: "Post Not Found",
+      title: "does not exist",
     };
   }
 
