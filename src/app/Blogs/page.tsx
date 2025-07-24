@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { BlogPost } from "@/services/blogService";
 import { useTheme } from "@/components/layout/ThemeProvider";
+import Link from "next/link";
 
 export default function Page() {
   const [blogs, setBlogs] = useState([]);
@@ -43,47 +44,48 @@ export default function Page() {
         </div>
       </div>
       {/* Line */}
-      <div className={`my-6 border-b-2 ${border} max-w-2xl w-full mx-auto`}></div>
+      <div
+        className={`my-6 border-b-2 ${border} max-w-2xl w-full mx-auto`}
+      ></div>
       <div className="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
         {blogs.map((blog: BlogPost) => (
           // You should wrap the card in a link to the blog post
           // e.g., <a href={`/blog/${blog.slug}`} key={blog.slug}>
-          <div
-            key={blog.slug}
-            className={`block border-2 ${border} rounded-xl p-6`}
-          >
-            {/* METADATA: Date and Read Time */}
-            <div className="flex justify-between items-center text-sm mb-4">
-              <span>
-                {new Date(blog.createdAt).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </span>
-              <span>{blog.read} min read</span>
-            </div>
-
-            {/* MAIN CONTENT */}
-            <div>
-              <h2 className="text-2xl font-bold ">{blog.name}</h2>
-              <p className=" mt-2">{blog.summary}</p>
-            </div>
-
-            {/* TAGS */}
-            {blog.tags && blog.tags.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {blog.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-purple-900/50 text-xs font-medium px-2.5 py-1 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
+          <Link key={blog.slug} href={`/Blogs/${blog.slug}`}>
+            <div className={`block border-2 ${border} rounded-xl p-6 cursor-pointer`}>
+              {/* METADATA: Date and Read Time */}
+              <div className="flex justify-between items-center text-sm mb-4">
+                <span>
+                  {new Date(blog.createdAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
+                <span>{blog.read} min read</span>
               </div>
-            )}
-          </div>
+
+              {/* MAIN CONTENT */}
+              <div>
+                <h2 className="text-2xl font-bold ">{blog.name}</h2>
+                <p className=" mt-2">{blog.summary}</p>
+              </div>
+
+              {/* TAGS */}
+              {blog.tags && blog.tags.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {blog.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-purple-900/50 text-xs font-medium px-2.5 py-1 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </Link>
           // </a>
         ))}
       </div>
