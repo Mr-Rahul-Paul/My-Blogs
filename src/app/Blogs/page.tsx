@@ -61,7 +61,7 @@ export default function Page() {
                 <span>
                   <ClientDate dateString={blog.createdAt} />
                 </span>
-                <span>{blog.read} min read</span>
+                <span>{blog.read}</span>
               </div>
 
               {/* MAIN CONTENT */}

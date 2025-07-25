@@ -1,6 +1,6 @@
 # Paul's Blog - Personal Tech Blog
 
-![Blog Screenshot](/public/template.png) <!-- Assuming there's a screenshot in public; adjust if needed -->
+![Blog Screenshot](/public/template.png)
 
 A modern, responsive personal blogging platform built with Next.js, TypeScript, and Tailwind CSS. Share your technical insights, coding tutorials, and creative content through an elegant, SEO-optimized interface.
 
@@ -55,7 +55,7 @@ It's more than just a blog—it's a learning tool and a showcase of my developme
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/my-blogs.git
+   git clone https://github.com/Mr-Rahul-Paul/my-blogs.git
    cd my-blogs
    ```
 
@@ -92,27 +92,16 @@ Deploy easily to Vercel:
 ## 📸 Screenshots
 
 ![Home Page](/public/template.png)
-![Blog Post](/public/template2.png) <!-- Add actual screenshots -->
-![Blog Post](/public/template3.png) <!-- Add actual screenshots -->
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+![Blog Post](/public/template2.png)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 👤 Author
 
-- Paul
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- **Rahul Paul**
+- GitHub: [@Mr-Rahul-Paul](https://github.com/Mr-Rahul-Paul)
+- Email: rpaul29120@gmail.com
 
 Happy blogging! 🚀
