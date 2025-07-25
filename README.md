@@ -92,7 +92,8 @@ Deploy easily to Vercel:
 ## 📸 Screenshots
 
 ![Home Page](/public/template.png)
-![Blog Post](/public/template.png) <!-- Add actual screenshots -->
+![Blog Post](/public/template2.png) <!-- Add actual screenshots -->
+![Blog Post](/public/template3.png) <!-- Add actual screenshots -->
 
 ## 🤝 Contributing
 
