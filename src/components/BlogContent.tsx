@@ -6,6 +6,7 @@ import rehypeHighlight from "rehype-highlight";
 import { useTheme } from "@/components/layout/ThemeProvider";
 import { ReactNode } from "react";
 import { Components } from "react-markdown";
+import ClientDate from "@/components/ui/ClientDate";
 
 interface BlogPost {
   name: string;
@@ -31,11 +32,7 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
         <h1 className={headerClass}>{blog.name}</h1>
         <div className={metaClass}>
           <span>
-            {new Date(blog.createdAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            <ClientDate dateString={blog.createdAt} />
           </span>
           <span className="mx-2">•</span>
           <span>{blog.read}</span>

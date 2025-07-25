@@ -4,6 +4,7 @@ import Image from "next/image";
 import { BlogPost } from "@/services/blogService";
 import { useTheme } from "@/components/layout/ThemeProvider";
 import Link from "next/link";
+import ClientDate from "@/components/ui/ClientDate";
 
 export default function Page() {
   const [blogs, setBlogs] = useState([]);
@@ -52,15 +53,13 @@ export default function Page() {
           // You should wrap the card in a link to the blog post
           // e.g., <a href={`/blog/${blog.slug}`} key={blog.slug}>
           <Link key={blog.slug} href={`/Blogs/${blog.slug}`}>
-            <div className={`block border-2 ${border} rounded-xl p-6 cursor-pointer`}>
+            <div
+              className={`block border-2 ${border} rounded-xl p-6 cursor-pointer`}
+            >
               {/* METADATA: Date and Read Time */}
               <div className="flex justify-between items-center text-sm mb-4">
                 <span>
-                  {new Date(blog.createdAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  <ClientDate dateString={blog.createdAt} />
                 </span>
                 <span>{blog.read} min read</span>
               </div>

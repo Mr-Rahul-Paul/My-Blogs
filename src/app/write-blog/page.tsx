@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import ClientDate from "@/components/ui/ClientDate";
 
 interface Blog {
   _id: string;
@@ -55,14 +56,14 @@ export default function WriteBlogPage() {
           className="border p-2 rounded"
           placeholder="Title"
           value={title}
-          onChange={e => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           required
         />
         <textarea
           className="border p-2 rounded min-h-[120px]"
           placeholder="Content"
           value={content}
-          onChange={e => setContent(e.target.value)}
+          onChange={(e) => setContent(e.target.value)}
           required
         />
         <button
@@ -80,13 +81,15 @@ export default function WriteBlogPage() {
         {blogs.map((blog) => (
           <div key={blog._id} className="border rounded p-4">
             <div className="font-bold text-lg">{blog.title}</div>
-            <div className="text-red-700 whitespace-pre-line ">{blog.content}</div>
+            <div className="text-red-700 whitespace-pre-line ">
+              {blog.content}
+            </div>
             <div className="text-xs text-gray-500 mt-2">
-              {blog.createdAt ? new Date(blog.createdAt).toLocaleString() : ""}
+              <ClientDate dateString={blog.createdAt} type="datetime" />
             </div>
           </div>
         ))}
       </div>
     </div>
   );
-} 
+}

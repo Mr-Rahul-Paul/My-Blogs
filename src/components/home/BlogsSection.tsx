@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { FiArrowRight, FiCalendar, FiClock } from "react-icons/fi";
 import { BlogPost } from "@/services/blogService";
 import { useTheme } from "@/components/layout/ThemeProvider";
+import ClientDate from "@/components/ui/ClientDate";
 
 const BlogCard = ({ post }: { post: BlogPost }) => {
   const { theme } = useTheme();
@@ -34,11 +35,10 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
             <div className="flex items-center gap-2">
               <FiCalendar className="w-5 h-5 text-blue-600" />
               <span>
-                {new Date(post.createdAt).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })}
+                <ClientDate
+                  dateString={post.createdAt}
+                  options={{ month: "short", day: "numeric", year: "numeric" }}
+                />
               </span>
             </div>
             <div className="flex items-center gap-2">
