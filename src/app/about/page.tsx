@@ -23,7 +23,7 @@ function about() {
 
                     <div className="mt-8 flex justify-center gap-6">
                         <div
-                            onClick={() => window.open("https://instagram.com/rahulpaul.3d", "_blank")}
+                            onClick={() => window.open("https://x.com/_Rahul_Paul", "_blank")}
                             className="font-bold underline hover:cursor-pointer">
                             X
                         </div>
@@ -34,7 +34,7 @@ function about() {
                             Instagram
                         </div>
                         <div
-                            onClick={() => window.open("https://instagram.com/rahulpaul.3d", "_blank")}
+                            onClick={() => window.open("https://github.com/Mr-Rahul-Paul", "_blank")}
                             className="font-bold underline hover:cursor-pointer"
                         >
                             GitHub
