@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { BlogPost } from "@/services/blogService";
@@ -8,13 +8,19 @@ import ClientDate from "@/components/ui/ClientDate";
 
 export default function Page() {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const res = await fetch("/api/blogs");
-      const data = await res.json();
-      setBlogs(data);
-      console.log(data);
+      try {
+        const res = await fetch("/api/blogs");
+        const data = await res.json();
+        setBlogs(data);
+      } catch (error) {
+        console.error("Failed to fetch blogs:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchBlogs();
   }, []);
@@ -48,6 +54,11 @@ export default function Page() {
       <div
         className={`my-6 border-b-2 ${border} max-w-2xl w-full mx-auto`}
       ></div>
+      {loading ? (
+        <div className="flex justify-center items-center h-screen">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900 -mt-12j0"></div>
+        </div>
+      ) : (
       <div className="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
         {blogs.map((blog: BlogPost) => (
           // You should wrap the card in a link to the blog post
@@ -86,8 +97,9 @@ export default function Page() {
             </div>
           </Link>
           // </a>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
