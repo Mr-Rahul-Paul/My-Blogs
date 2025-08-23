@@ -4,6 +4,7 @@ import { FiArrowRight, FiCalendar, FiClock } from "react-icons/fi";
 import { BlogPost } from "@/services/blogService";
 import { useTheme } from "@/components/layout/ThemeProvider";
 import ClientDate from "@/components/ui/ClientDate";
+import Link from "next/link";
 
 const BlogCard = ({ post }: { post: BlogPost }) => {
   const { theme } = useTheme();
@@ -154,7 +155,7 @@ const BlogsSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="font-sans font-bold text-[clamp(2.5rem,8vw,5rem)] leading-none mb-6">
+          <h2 className="font-sans font-bold text-[clamp(2.5rem,8vw,5rem)] leading-none mb-6 underline underline-offset-9">
             Latest Blogs
           </h2>
         </div>
@@ -172,14 +173,16 @@ const BlogsSection = () => {
         </div>
 
         <div className="text-center">
-          <button
+          <Link
+            href="/Blogs"
             className={`${border} border-3 inline-flex items-center gap-3 px-10 py-4 font-bold text-lg rounded-2xl  hover:shadow-2xl hover:shadow-blue-500/25 `}
           >
+
             View All Posts
             <div className="w-6 h-6 rounded-full flex items-center justify-center">
               <FiArrowRight className="w-5 h-5 " />
             </div>
-          </button>
+          </Link>
         </div>
       </div>
     </section>
