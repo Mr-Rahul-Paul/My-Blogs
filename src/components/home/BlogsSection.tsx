@@ -160,12 +160,12 @@ const BlogsSection = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 mb-16 rounded-">
+        <div className="grid md:grid-cols-2 gap-10 mb-16 rounded-xl">
           {posts.map((post, idx) => {
             const isLastOdd =
               posts.length % 2 === 1 && idx === posts.length - 1;
             return (
-              <div key={post.id} className={isLastOdd ? "md:col-span-2" : ""}>
+              <div key={post.id || `post-${idx}`} className={isLastOdd ? "md:col-span-2" : ""}>
                 <BlogCard post={post} />
               </div>
             );

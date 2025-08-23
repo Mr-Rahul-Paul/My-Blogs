@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Svgs() {
   return (
-    <div className=" w-screen overflow-clip">
+    <div className=" w-screen overflow-clip -z-10">
       <svg
         className="absolute left-[-80px] top-[-60px] w-48 h-48 opacity-60"
         fill="none"

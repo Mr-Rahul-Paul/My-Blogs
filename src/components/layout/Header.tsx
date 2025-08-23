@@ -43,16 +43,7 @@ const Header = () => {
           >
             About
           </Link>
-          <Link
-            href="/contact"
-            className={`relative after:content-[""] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[2px] after:transition-all after:duration-300 hover:after:w-full ${
-              theme === "light"
-                ? "text-black after:bg-black hover:text-black"
-                : "text-white after:bg-white hover:text-white"
-            }`}
-          >
-            Contact
-          </Link>
+          
         </nav>
         <div
           className={` flex items-center space-x-4 rounded-full   ${

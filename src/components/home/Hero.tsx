@@ -20,7 +20,7 @@ const Hero = () => {
     <>
       <section className="relative h-screen bg-cover bg-center max-w-full  z-10 overflow-hidden">
         {/* Background curved SVG for blur gradient effect */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <div className="absolute inset-0 w-full h-full overflow-hidden -z-10">
           <svg
             className="w-full h-full"
             viewBox="0 0 100 100"
