@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 
 function about() {
@@ -20,32 +21,25 @@ function about() {
                     <br />
                     Thanks for stopping by! :D
 
-                <div className="mt-8 flex justify-center gap-6">
-                    <a
-                        href="https://x.com/_Rahul_Paul"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: "black", textDecoration: "underline", fontWeight: "bold" }}
-                    >
-                        X
-                    </a>
-                    <a
-                        href="https://instagram.com/rahulpaul.3d"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: "black", textDecoration: "underline", fontWeight: "bold" }}
-                    >
-                        Instagram
-                    </a>
-                    <a
-                        href="https://github.com/Mr-Rahul-Paul"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: "black", textDecoration: "underline", fontWeight: "bold" }}
-                    >
-                        GitHub
-                    </a>
-                </div>
+                    <div className="mt-8 flex justify-center gap-6">
+                        <div
+                            onClick={() => window.open("https://instagram.com/rahulpaul.3d", "_blank")}
+                            className="font-bold underline hover:cursor-pointer">
+                            X
+                        </div>
+                        <div
+                            onClick={() => window.open("https://instagram.com/rahulpaul.3d", "_blank")}
+                            className="font-bold underline hover:cursor-pointer"
+                        >
+                            Instagram
+                        </div>
+                        <div
+                            onClick={() => window.open("https://instagram.com/rahulpaul.3d", "_blank")}
+                            className="font-bold underline hover:cursor-pointer"
+                        >
+                            GitHub
+                        </div>
+                    </div>
                 </p>
             </div>
         </div>
