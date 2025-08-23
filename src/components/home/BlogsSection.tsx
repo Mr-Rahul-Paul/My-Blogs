@@ -10,7 +10,7 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
   const border = theme === "light" ? "!border-black" : "!border-white";
   return (
     <article
-      className={`${border} hover:backdrop-blur-lg border-2 rounded-3xl p-2 mt-4 font-semibold z-30`}
+      className={`${border} mx-auto max-w-4xl items-center hover:backdrop-blur-lg border-2 rounded-3xl p-2 mt-4 font-semibold z-30`}
     >
       {/* Subtle gradient overlay */}
       <div className="relative z-10 p-3">
@@ -159,7 +159,7 @@ const BlogsSection = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 mb-16">
+        <div className="grid md:grid-cols-2 gap-10 mb-16 rounded-">
           {posts.map((post, idx) => {
             const isLastOdd =
               posts.length % 2 === 1 && idx === posts.length - 1;
