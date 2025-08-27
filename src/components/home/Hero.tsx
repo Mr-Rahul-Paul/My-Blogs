@@ -28,18 +28,18 @@ const Hero = () => {
   } satisfies Variants;
 
   const wordVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 25 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 300, damping: 22 }
+      transition: { type: "spring", stiffness: 300, damping: 50 }
     }
   } satisfies Variants;
 
   const titleWords = "Paul's Blogs".split(" ");
   const subtitleWords = "Where Code Meets Content".split(" ");
-  const line1Words = "Tech and Art.".split(" ");
-  const line2Words = "Explore in-depth tutorials, creative writing, and tech insights.".split(" ");
+  const line1Words = "Tech and Art.".split("  ");
+  const line2Words = "Explore in-depth tutorials, creative writing, and tech insights.".split("  ");
 
   const scrollToBlogs = () => {
     const blogsSection = document.getElementById('blogs-section');
