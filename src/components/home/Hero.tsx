@@ -1,15 +1,50 @@
 "use client";
 import Svgs from "@/components/ui/svgs";
 import { useTheme } from "@/components/layout/ThemeProvider";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
+
 
 const Hero = () => {
   const { theme } = useTheme();
   const border = theme === "light" ? "!border-black" : "!border-white";
 
+  // Framer Motion variants for a staggered word-by-word reveal
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 }
+    }
+  } satisfies Variants;
+
+  // Parent sequence so sections (title → subtitle → paragraph → button) reveal in order
+  const sequenceVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.25, delayChildren: 0.05 }
+    }
+  } satisfies Variants;
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 300, damping: 22 }
+    }
+  } satisfies Variants;
+
+  const titleWords = "Paul's Blogs".split(" ");
+  const subtitleWords = "Where Code Meets Content".split(" ");
+  const line1Words = "Tech and Art.".split(" ");
+  const line2Words = "Explore in-depth tutorials, creative writing, and tech insights.".split(" ");
+
   const scrollToBlogs = () => {
     const blogsSection = document.getElementById('blogs-section');
     if (blogsSection) {
-      blogsSection.scrollIntoView({ 
+      blogsSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -52,28 +87,78 @@ const Hero = () => {
         </div>
         <Svgs />
         <div className="h-full flex flex-col items-center justify-center">
-          <div className="text-center px-4">
-            <h1 className="font-sans font-bold text-[clamp(3rem,10vw,8rem)] leading-none tracking-tight">
-              Paul&apos;s Blogs
-            </h1>
-            <h2 className="font-sans font-bold text-[clamp(1.5rem,5vw,3rem)] leading-none tracking-tight mt-8">
-              Where Code Meets Content
-            </h2>
+          <motion.div className="text-center px-4" variants={sequenceVariants} initial="hidden" animate="visible">
+            <motion.h1
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="font-sans font-bold text-[clamp(3rem,10vw,8rem)] leading-none tracking-tight"
+            >
+              {titleWords.map((word, index) => (
+                <motion.span
+                  key={index}
+                  variants={wordVariants}
+                  className="inline-block mr-[0.4ch]"
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </motion.h1>
+            <motion.h2
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="font-sans font-bold text-[clamp(1.5rem,5vw,3rem)] leading-none tracking-tight mt-8"
+            >
+              {subtitleWords.map((word, index) => (
+                <motion.span
+                  key={index}
+                  variants={wordVariants}
+                  className="inline-block mr-[0.4ch]"
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </motion.h2>
             <div className="flex flex-col items-center justify-center font-semibold text-lg">
-              <p className="mt-8 max-w-2xl text-center">
-                Tech and Art.
+              <motion.p
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="mt-8 max-w-2xl text-center"
+              >
+                {line1Words.map((word, index) => (
+                  <motion.span
+                    key={`l1-${index}`}
+                    variants={wordVariants}
+                    className="inline-block mr-[0.4ch]"
+                  >
+                    {word}
+                  </motion.span>
+                ))}
                 <br />
-                Explore in-depth tutorials, creative writing, and tech insights.
-              </p>
+                {line2Words.map((word, index) => (
+                  <motion.span
+                    key={`l2-${index}`}
+                    variants={wordVariants}
+                    className="inline-block mr-[0.4ch]"
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
           <div className="flex justify-center ">
-            <button
+            <motion.button
               onClick={scrollToBlogs}
+              variants={wordVariants}
+              initial="hidden"
+              animate="visible"
               className={`${border} hover:backdrop-blur-lg border-2 rounded-xl p-2 mt-4 font-semibold z-30`}
             >
               See the blogs
-            </button>
+            </motion.button>
           </div>
         </div>
       </section>
