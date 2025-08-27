@@ -90,8 +90,6 @@ const Hero = () => {
           <motion.div className="text-center px-4" variants={sequenceVariants} initial="hidden" animate="visible">
             <motion.h1
               variants={containerVariants}
-              initial="hidden"
-              animate="visible"
               className="font-sans font-bold text-[clamp(3rem,10vw,8rem)] leading-none tracking-tight"
             >
               {titleWords.map((word, index) => (
@@ -106,8 +104,6 @@ const Hero = () => {
             </motion.h1>
             <motion.h2
               variants={containerVariants}
-              initial="hidden"
-              animate="visible"
               className="font-sans font-bold text-[clamp(1.5rem,5vw,3rem)] leading-none tracking-tight mt-8"
             >
               {subtitleWords.map((word, index) => (
@@ -120,11 +116,9 @@ const Hero = () => {
                 </motion.span>
               ))}
             </motion.h2>
-            <div className="flex flex-col items-center justify-center font-semibold text-lg">
+            <motion.div variants={containerVariants} className="flex flex-col items-center justify-center font-semibold text-lg">
               <motion.p
                 variants={containerVariants}
-                initial="hidden"
-                animate="visible"
                 className="mt-8 max-w-2xl text-center"
               >
                 {line1Words.map((word, index) => (
@@ -147,19 +141,18 @@ const Hero = () => {
                   </motion.span>
                 ))}
               </motion.p>
-            </div>
+            </motion.div>
+            <motion.div variants={containerVariants} className="flex justify-center ">
+              <motion.button
+                onClick={scrollToBlogs}
+                variants={wordVariants}
+                className={`${border} hover:backdrop-blur-lg border-2 rounded-xl p-2 mt-4 font-semibold z-30`}
+              >
+                See the blogs
+              </motion.button>
+            </motion.div>
           </motion.div>
-          <div className="flex justify-center ">
-            <motion.button
-              onClick={scrollToBlogs}
-              variants={wordVariants}
-              initial="hidden"
-              animate="visible"
-              className={`${border} hover:backdrop-blur-lg border-2 rounded-xl p-2 mt-4 font-semibold z-30`}
-            >
-              See the blogs
-            </motion.button>
-          </div>
+
         </div>
       </section>
     </>
