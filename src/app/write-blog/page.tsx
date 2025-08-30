@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import ClientDate from "@/components/ui/ClientDate";
 
 interface Blog {
   _id: string;
@@ -84,8 +83,19 @@ export default function WriteBlogPage() {
             <div className="text-red-700 whitespace-pre-line ">
               {blog.content}
             </div>
-            <div className="text-xs text-gray-500 mt-2">
-              <ClientDate dateString={blog.createdAt} type="datetime" />
+            <div
+              className="text-xs text-gray-500 mt-2"
+              suppressHydrationWarning
+            >
+              {blog.createdAt
+                ? new Date(blog.createdAt).toLocaleString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })
+                : ""}
             </div>
           </div>
         ))}

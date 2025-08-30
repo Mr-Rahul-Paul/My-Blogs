@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { FiArrowRight, FiCalendar, FiClock } from "react-icons/fi";
 import { BlogPost } from "@/services/blogService";
 import { useTheme } from "@/components/layout/ThemeProvider";
-import ClientDate from "@/components/ui/ClientDate";
+
 import Link from "next/link";
 
 const BlogCard = ({ post }: { post: BlogPost }) => {
@@ -35,11 +35,14 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
               <FiCalendar className="w-5 h-5 text-blue-600" />
-              <span>
-                <ClientDate
-                  dateString={post.createdAt}
-                  options={{ month: "short", day: "numeric", year: "numeric" }}
-                />
+              <span suppressHydrationWarning>
+                {post.createdAt
+                  ? new Date(post.createdAt).toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })
+                  : ""}
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -165,7 +168,10 @@ const BlogsSection = () => {
             const isLastOdd =
               posts.length % 2 === 1 && idx === posts.length - 1;
             return (
-              <div key={post.id || `post-${idx}`} className={isLastOdd ? "md:col-span-2" : ""}>
+              <div
+                key={post.id || `post-${idx}`}
+                className={isLastOdd ? "md:col-span-2" : ""}
+              >
                 <BlogCard post={post} />
               </div>
             );
@@ -177,7 +183,6 @@ const BlogsSection = () => {
             href="/Blogs"
             className={`${border} border-3 inline-flex items-center gap-3 px-10 py-4 font-bold text-lg rounded-2xl  hover:shadow-2xl hover:shadow-purple-500`}
           >
-
             View All Posts
             <div className="w-6 h-6 rounded-full flex items-center justify-center">
               <FiArrowRight className="w-5 h-5 " />
