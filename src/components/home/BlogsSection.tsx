@@ -175,7 +175,7 @@ const BlogsSection = () => {
         <div className="text-center">
           <Link
             href="/Blogs"
-            className={`${border} border-3 inline-flex items-center gap-3 px-10 py-4 font-bold text-lg rounded-2xl  hover:shadow-2xl hover:shadow-blue-500/25 `}
+            className={`${border} border-3 inline-flex items-center gap-3 px-10 py-4 font-bold text-lg rounded-2xl  hover:shadow-2xl hover:shadow-purple-500`}
           >
 
             View All Posts
