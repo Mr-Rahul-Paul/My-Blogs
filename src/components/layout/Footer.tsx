@@ -1,5 +1,5 @@
 "use client";
-import { FiGithub, FiX , FiLinkedin, FiMail, FiMapPin, FiPhone, FiArrowRight, FiTwitter } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMapPin, FiPhone, FiArrowRight, FiTwitter } from 'react-icons/fi';
 import Link from 'next/link';
 import { useTheme } from './ThemeProvider';
 
@@ -143,7 +143,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className={`py-8 px-6 rounded-4xl mb-8 border-2 ${theme === "light"
+        <div className={`py-8 px-6 rounded- mb-8 border-2 ${theme === "light"
           ? "bg-white border "
           : " border border-gray-700"
           }`}>
