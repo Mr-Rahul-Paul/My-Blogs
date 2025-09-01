@@ -1,5 +1,5 @@
 "use client";
-import { FiGithub, FiTwitter, FiLinkedin, FiMail, FiMapPin, FiPhone, FiArrowRight } from 'react-icons/fi';
+import { FiGithub, FiX , FiLinkedin, FiMail, FiMapPin, FiPhone, FiArrowRight, FiTwitter } from 'react-icons/fi';
 import Link from 'next/link';
 import { useTheme } from './ThemeProvider';
 
@@ -34,7 +34,7 @@ const Footer = () => {
             {/* Social Media Links */}
             <div className="flex space-x-4">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/Mr-Rahul-Paul/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${theme === "light"
@@ -45,7 +45,7 @@ const Footer = () => {
                 <FiGithub className="text-xl" />
               </a>
               <a
-                href="https://twitter.com/Mr-Rahul-Paul"
+                href="https://github.com/Mr-Rahul-Paul/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${theme === "light"
@@ -56,7 +56,7 @@ const Footer = () => {
                 <FiTwitter className="text-xl" />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/rahul-paul-0109bb219/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${theme === "light"
@@ -103,15 +103,7 @@ const Footer = () => {
                   About
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/write-blog"
-                  className={`hover:underline transition-colors duration-200 ${theme === "light" ? "text-gray-600 hover:text-gray-900" : "text-gray-400 hover:text-white"
-                    }`}
-                >
-                  Write Blog
-                </Link>
-              </li>
+             
             </ul>
           </div>
 
@@ -123,11 +115,11 @@ const Footer = () => {
             </h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <FiMail className={`${theme === "light" ? "text-gray-600" : "text-gray-400"
+                <FiTwitter className={`${theme === "light" ? "text-gray-600" : "text-gray-400"
                   }`} />
                 <span className={`${theme === "light" ? "text-gray-600" : "text-gray-400"
                   }`}>
-                  hello@paulsblogs.com
+                  @_Rahul_Paul
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -143,7 +135,7 @@ const Footer = () => {
                   }`} />
                 <span className={`${theme === "light" ? "text-gray-600" : "text-gray-400"
                   }`}>
-                  +91 XXXXXXXXXX
+                  +91 XXXXXXXXXX (nope)
                 </span>
               </div>
             </div>
@@ -151,9 +143,9 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className={`py-8 px-6 rounded-lg mb-8 border-2 ${theme === "light"
-          ? "bg-white border border-gray-200"
-          : "bg-gray-800 border border-gray-700"
+        <div className={`py-8 px-6 rounded-4xl mb-8 border-2 ${theme === "light"
+          ? "bg-white border "
+          : " border border-gray-700"
           }`}>
           <div className={`text-center`}>
             <h4 className={`text-lg font-semibold mb-2`}>
