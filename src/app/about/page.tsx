@@ -14,7 +14,7 @@ function about() {
                     <br />
                     I enjoy every bit of the process.
                 </p>
-                <p className="text-lg">
+                <div className="text-lg">
                     When I&apos;m not coding or writing, you can find me experimenting with digital art, reading, or exploring new places.
                     <br />
                     <br />
@@ -40,7 +40,7 @@ function about() {
                             GitHub
                         </div>
                     </div>
-                </p>
+                </div>
             </div>
         </div>
     )
