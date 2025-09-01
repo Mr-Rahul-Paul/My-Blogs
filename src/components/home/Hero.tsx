@@ -146,7 +146,7 @@ const Hero = () => {
               <motion.button
                 onClick={scrollToBlogs}
                 variants={wordVariants}
-                className={`${border} hover:backdrop-blur-lg border-2 rounded-xl p-2 mt-4 font-semibold z-30`}
+                className={`${border} hover:backdrop-blur-lg hover:cursor-pointer hover:shadow-xl hover:shadow-blur-lg hover:shadow-white/60 border-2 rounded-xl p-2 mt-4 font-semibold z-30`}
               >
                 See the blogs
               </motion.button>

@@ -1,10 +1,9 @@
-'use client';
+"use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { BlogPost } from "@/services/blogService";
 import { useTheme } from "@/components/layout/ThemeProvider";
 import Link from "next/link";
-import ClientDate from "@/components/ui/ClientDate";
 
 export default function Page() {
   const [blogs, setBlogs] = useState([]);
@@ -59,44 +58,50 @@ export default function Page() {
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900 -mt-12j0"></div>
         </div>
       ) : (
-      <div className="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
-        {blogs.map((blog: BlogPost) => (
-          // You should wrap the card in a link to the blog post
-          // e.g., <a href={`/blog/${blog.slug}`} key={blog.slug}>
-          <Link key={blog.slug} href={`/Blogs/${blog.slug}`}>
-            <div
-              className={`block border-2 ${border} rounded-xl p-6 cursor-pointer`}
-            >
-              {/* METADATA: Date and Read Time */}
-              <div className="flex justify-between items-center text-sm mb-4">
-                <span>
-                  <ClientDate dateString={blog.createdAt} />
-                </span>
-                <span>{blog.read}</span>
-              </div>
-
-              {/* MAIN CONTENT */}
-              <div>
-                <h2 className="text-2xl font-bold ">{blog.name}</h2>
-                <p className=" mt-2">{blog.summary}</p>
-              </div>
-
-              {/* TAGS */}
-              {blog.tags && blog.tags.length > 0 && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {blog.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-purple-900/50 text-xs font-medium px-2.5 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+        <div className="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
+          {blogs.map((blog: BlogPost) => (
+            // You should wrap the card in a link to the blog post
+            // e.g., <a href={`/blog/${blog.slug}`} key={blog.slug}>
+            <Link key={blog.slug} href={`/Blogs/${blog.slug}`}>
+              <div
+                className={`block border-2 ${border} rounded-xl p-6 cursor-pointer`}
+              >
+                {/* METADATA: Date and Read Time */}
+                <div className="flex justify-between items-center text-sm mb-4">
+                  <span suppressHydrationWarning>
+                    {blog.createdAt
+                      ? new Date(blog.createdAt).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })
+                      : ""}
+                  </span>
+                  <span>{blog.read}</span>
                 </div>
-              )}
-            </div>
-          </Link>
-          // </a>
+
+                {/* MAIN CONTENT */}
+                <div>
+                  <h2 className="text-2xl font-bold ">{blog.name}</h2>
+                  <p className=" mt-2">{blog.summary}</p>
+                </div>
+
+                {/* TAGS */}
+                {blog.tags && blog.tags.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {blog.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="bg-purple-900/50 text-xs font-medium px-2.5 py-1 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Link>
+            // </a>
           ))}
         </div>
       )}
