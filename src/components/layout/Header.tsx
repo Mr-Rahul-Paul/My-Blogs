@@ -22,7 +22,7 @@ const Header = () => {
             Paul&apos;s Blogs
           </Link>
         </div>
-        <nav className="hidden sm:flex items-center space-x-8">
+        <nav className="hidden sm:flex items-center font-bold space-x-8">
           <Link
             href="/Blogs"
             className={`relative after:content-[""] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[2px] after:transition-all after:duration-300 hover:after:w-full ${
