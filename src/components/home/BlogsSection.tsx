@@ -168,12 +168,16 @@ const BlogsSection = () => {
             const isLastOdd =
               posts.length % 2 === 1 && idx === posts.length - 1;
             return (
-              <div
+              <Link
                 key={post.id || `post-${idx}`}
-                className={isLastOdd ? "md:col-span-2" : ""}
+                href={`/Blogs/${post.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={isLastOdd ? "md:col-span-2 block" : "block"}
+                style={{ textDecoration: "none" }}
               >
                 <BlogCard post={post} />
-              </div>
+              </Link>
             );
           })}
         </div>
